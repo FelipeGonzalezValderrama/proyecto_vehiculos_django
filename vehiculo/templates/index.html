@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="text-center">
+    <h1><strong class="">Catálogo de Vehículos <img src="{% static 'assets/img/car3.png' %}" alt="picCar"></strong></h1>
+    <h5>¡Bienvenido al catálogo de vehículos!</h5>
+    <br>
+    <div class="container d-flex justify-content-center">
+        <div>
+            <a class="btn btn-success mt-3" href="{% url 'vehiculo_add' %}">Agregar Vehículo</a>
+        </div>
+        <div class="ms-3">
+            <a class="btn btn-secondary mt-3" href="{% url 'listar' %}">Lista vehículos</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

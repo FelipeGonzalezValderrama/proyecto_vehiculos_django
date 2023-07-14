@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Barra de búsqueda de vehículos -->
+<br>
+<h1 class="text-center"><strong>Listado de Vehículos <img src="{% static 'assets/img/car3.png' %}" alt=""></strong></h1>
+<br>
+<div class="container d-flex justify-content-center w-100">
+    <form class="d-flex" method="GET" action="{% url 'listar' %}">
+        <div class="input-group">
+            <input class="form-control rounded shadow-lg" type="search" placeholder="Buscar" aria-label="Search" name="query"
+                value="{{ request.GET.query }}">
+                <select class="form-select rounded ms-3 shadow-lg" name="precio_condicion">
+                    <option value="" {% if not precio_condicion %}selected{% endif %}>Todos</option>
+                    <option value="bajo" {% if precio_condicion == 'bajo' %}selected{% endif %}>Bajo</option>
+                    <option value="medio" {% if precio_condicion == 'medio' %}selected{% endif %}>Medio</option>
+                    <option value="alto" {% if precio_condicion == 'alto' %}selected{% endif %}>Alto</option>
+                </select>
+                <button class="btn btn-outline-success rounded ms-2 shadow-lg" type="submit">Buscar</button>
+            <button class="btn btn-outline-secondary rounded ms-3 shadow-lg" type="button" onclick="limpiarBusqueda()">Limpiar</button>
+            
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+{% block list %}
+<!-- Bloque de listado de vehículos -->
+<br><br>
+<div class="container shadow-lg">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Serial Carrocería</th>
+                    <th>Serial Motor</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Condicion Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculo in vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.marca }}</td>
+                    <td>{{ vehiculo.modelo }}</td>
+                    <td>{{ vehiculo.serial_carroceria }}</td>
+                    <td>{{ vehiculo.serial_motor }}</td>
+                    <td>{{ vehiculo.categoria }}</td>
+                    <td>{{ vehiculo.precio }}</td>
+                    <td>
+                        {% if vehiculo.precio <= 10000 %}
+                            Bajo
+                        {% elif vehiculo.precio > 10000 and vehiculo.precio <= 30000 %}
+                            Medio
+                        {% elif vehiculo.precio > 30000 %}
+                            Alto
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock list %}
+
+{% block scripts %}
+<script>
+    function limpiarBusqueda() {
+        document.querySelector('input[name="query"]').value = '';
+        document.querySelector('form').submit();
+    }
+</script>
+{% endblock scripts %}

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="{% url 'index' %}">Vehículos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active text-white" aria-current="page" href="{% url 'index' %}">Inicio</a>
+                <a class="nav-link text-white" href="{% url 'vehiculo_add' %}">Agregar</a>
+                <a class="nav-link text-white" href="{% url 'listar' %}">Listar</a>
+                <a class="nav-link text-white" href="{% url 'registro' %}">Registro</a>
+
+            </div>
+        </div>
+        <!--auth navbar-->
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/logout"><strong>Logout</strong></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#"><strong>{{user.username}}</strong></a>
+        </li>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/login"> <strong>Login</strong></a>
+        </li>
+        {% endif %}
+        <!--fin auth-->
+    </div>
+</nav>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--formulario agregar vehiculo-->
+<br><br>
+<div class="container d-flex justify-content-center">
+    <div class="card shadow-lg" style="background-color: rgb(217, 239, 235);">
+        <div class="card-body mb-3">
+            <div>
+                <h1 class="mt-3 pb-3"><strong>Ingreso de Vehículo</strong></h1>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center pt-2">
+                    <button type="submit" class="btn btn-success">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<footer id="myFooter" class="fixed-bottom bg-dark text-center text-white py-1">
+    <div class="container-flex">
+        <p class="mt-2">Vehiculos APP</p>
+    </div>
+</footer>
+
+<script>
+    // Obtiene el elemento del footer
+    var footer = document.getElementById("myFooter");
+
+    // Agrega un event listener para el evento "mouseover"
+    footer.addEventListener("mouseover", function() {
+        // Oculta el footer
+        footer.style.display = "none";
+    });
+
+    // Agrega un event listener para el evento "mouseout"
+    footer.addEventListener("mouseout", function() {
+        // Muestra el footer
+        footer.style.display = "block";
+    });
+</script>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+    <h1 class="text-center"><strong>Vehículo Agregando con Exito!</strong></h1>
+</div>
+<br><br>
+<div class="container d-flex justify-content-center">
+    <div>
+        <a class="btn btn-success mt-3" href="{% url 'index' %}">Pagina Principal</a>
+    </div>
+    <div class="ms-3">
+        <a class="btn btn-secondary mt-3" href="{% url 'vehiculo_add' %}">Agregar otro vehiculo</a>
+    </div>
+    <div class="ms-3">
+        <a class="btn btn-dark mt-3" href="{% url 'listar' %}">Lista vehículos</a>
+    </div>
+</div>
+{% endblock content %}
