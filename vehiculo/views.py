@@ -125,5 +125,5 @@ class LogoutView(LoginRequiredMixin, View):
 
 
 #add vehiculo con exito
-def correct_add(request):
+def correct_addView(request):
     return render(request, "correct_add.html")

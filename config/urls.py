@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from vehiculo.views import IndexView, VehiculoAddView, ListarVehiculosView, RegistroView, LoginView, LogoutView, correct_add
+from vehiculo.views import IndexView, VehiculoAddView, ListarVehiculosView, RegistroView, LoginView, LogoutView, correct_addView
 
 
 urlpatterns = [
@@ -23,7 +23,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('vehiculo/add/', VehiculoAddView.as_view(), name='vehiculo_add'),
     path('listar/', ListarVehiculosView.as_view(), name='listar'),
-    path("correct_add/", correct_add, name="correct_add"),
+    path("correct_add/", correct_addView, name="correct_addView"),
     path('registro/', RegistroView.as_view(), name='registro'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
