@@ -1,19 +1,50 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-<br><br><br><br><br><br>
-<div class="text-center">
-    <h1><strong class="">Catálogo de Vehículos <img src="{% static 'assets/img/car3.png' %}" alt="picCar"></strong></h1>
-    <h5>¡Bienvenido al catálogo de vehículos!</h5>
-    <br>
-    <div class="container d-flex justify-content-center">
-        <div>
-            <a class="btn btn-success mt-3" href="{% url 'vehiculo_add' %}">Agregar Vehículo</a>
-        </div>
-        <div class="ms-3">
-            <a class="btn btn-secondary mt-3" href="{% url 'listar' %}">Lista vehículos</a>
+<main class="video-container">
+    <video class="video-background" muted autoplay loop preload="auto" poster="{% static 'assets/img/poster.jpg' %}">
+        <source src="{% static 'assets/video/mixkit-suspended-bridge-with-traffic-40-medium.mp4'%}" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="text-center">
+            <h1><strong class="">Catálogo de Vehículos</strong></h1>
+            <h5>¡Bienvenido al catálogo de vehículos!</h5>
+            <br>
+            <div class="container d-flex justify-content-center">
+                <div>
+                    <a class="btn btn-secondary mt-3 neon-button" href="{% url 'listar' %}">Listado vehículos</a>
+                </div>
+                <div class="ms-3">
+                    <a class="btn btn-success mt-3 neon-button" href="{% url 'vehiculo_add' %}">Agregar Vehículo</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</main>
+<!--footer black-->
+<footer id="myFooter" class="fixed-bottom bg-transparent text-center text-white py-1">
+    <div class="container-flex">
+        <p class="mt-2 fs-xxl"><strong>Vehiculos APP</strong></p>
+    </div>
+</footer>
+<!--end footer black-->
+<!--script vanish footer-->
+<script>
+    // Obtiene el elemento del footer
+    var footer = document.getElementById("myFooter");
+
+    // Agrega un event listener para el evento "mouseover"
+    footer.addEventListener("mouseover", function() {
+        // Oculta el footer
+        footer.style.display = "none";
+    });
+
+    // Agrega un event listener para el evento "mouseout"
+    footer.addEventListener("mouseout", function() {
+        // Muestra el footer
+        footer.style.display = "block";
+    });
+</script>
+
 {% endblock content %}

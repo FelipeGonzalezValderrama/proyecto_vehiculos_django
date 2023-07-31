@@ -4,21 +4,45 @@
 <!--registro nuevo usuario-->
 <br>
 <div class="container py-5">
-<div class="container text-center ">
-<h1><strong>Registro</strong></h1>
-<p>
-    <br>
-    Ya tienes una Cuenta?, inicia Sesion:
-    <a href="/login"> <mark>LOGIN</mark> </a>.
-</p>
+    <div class="container text-center ">
+        <h1><strong>Registro</strong></h1>
+        <p>
+            <br>
+            Ya tienes una Cuenta?, inicia Sesion:
+            <a href="/login"> <mark>LOGIN</mark> </a>.
+        </p>
+    </div>
+    <div class="container py-5 d-flex justify-content-center">
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ register_form|crispy }}
+            <button class="btn btn-success" type="submit">Register</button>
+        </form>
+    </div>
 </div>
-<div class="container py-5 d-flex justify-content-center">
-    
-    <form method="POST">
-        {% csrf_token %}
-        {{ register_form|crispy }}
-        <button class="btn btn-success" type="submit">Register</button>
-    </form>
-</div>
-</div>
+<!--footer black-->
+<footer id="myFooter" class="fixed-bottom bg-black text-center text-white py-1">
+    <div class="container-flex">
+        <p class="mt-2"><strong>Vehiculos APP</strong></p>
+    </div>
+</footer>
+<!--end footer black-->
+<!--script vanish footer-->
+<script>
+    // Obtiene el elemento del footer
+    var footer = document.getElementById("myFooter");
+
+    // Agrega un event listener para el evento "mouseover"
+    footer.addEventListener("mouseover", function () {
+        // Oculta el footer
+        footer.style.display = "none";
+    });
+
+    // Agrega un event listener para el evento "mouseout"
+    footer.addEventListener("mouseout", function () {
+        // Muestra el footer
+        footer.style.display = "block";
+    });
+</script>
 {% endblock form %}

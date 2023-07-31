@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogo de vehiculos</title>
     <link rel="shortcut icon" type="icon" href="{% static 'assets/img/car.ico' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
 
 
     {% load bootstrap5 %}
@@ -18,7 +19,7 @@
 
 <body>
     {% include 'navbar.html' %}
-    
+
     {% block content %}
     {% endblock content %}
 
@@ -31,7 +32,8 @@
     {% block scripts %}
     {% endblock scripts %}
 
-    {% include 'footer.html' %}
+    <!--{% include 'footer.html' %}-->
+
 
 </body>
 

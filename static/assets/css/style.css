@@ -1,0 +1,78 @@
+/* Estilos para el contenedor principal */
+.video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Estilos para el video de fondo */
+.video-background {
+    position: absolute;
+    top: -10; /* Subir el video */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Estilos para la capa semitransparente */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cambiar el valor de opacidad según lo desees */
+    z-index: -1; /* Colocar la capa detrás del texto y botones */
+}
+
+/* Estilos para el contenido (texto y botones) */
+.content {
+    position: absolute;
+    top: 40%; /* Subir el contenido 40% hacia arriba */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1; /* Colocar el contenido sobre el video */
+}
+
+/* Estilos para los botones */
+.content .btn {
+    margin: 15px;
+    padding: 12px 25px;
+    font-size: 15px;
+}
+
+.neon-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.neon-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #00ff00, #00ff99, #00ff00, #00ff99);
+    transform: translateX(-100%);
+    z-index: -1;
+    transition: transform 0.3s;
+}
+
+.neon-button:hover:before {
+    transform: translateX(0);
+}

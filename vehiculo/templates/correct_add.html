@@ -17,4 +17,29 @@
         <a class="btn btn-dark mt-3" href="{% url 'listar' %}">Lista vehículos</a>
     </div>
 </div>
+<!--footer black-->
+<footer id="myFooter" class="fixed-bottom bg-black text-center text-white py-1">
+    <div class="container-flex">
+        <p class="mt-2"><strong>Vehiculos APP</strong></p>
+    </div>
+</footer>
+<!--end footer black-->
+<!--script footer-->
+<script>
+    // Obtiene el elemento del footer
+    var footer = document.getElementById("myFooter");
+
+    // Agrega un event listener para el evento "mouseover"
+    footer.addEventListener("mouseover", function () {
+        // Oculta el footer
+        footer.style.display = "none";
+    });
+
+    // Agrega un event listener para el evento "mouseout"
+    footer.addEventListener("mouseout", function () {
+        // Muestra el footer
+        footer.style.display = "block";
+    });
+</script>
+
 {% endblock content %}
