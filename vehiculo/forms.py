@@ -12,6 +12,7 @@ class VehiculoForm(forms.ModelForm):
             "modelo",
             "serial_carroceria",
             "serial_motor",
+            "año",
             "categoria",
             "precio",
         ]

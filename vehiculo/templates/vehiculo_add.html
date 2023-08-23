@@ -13,7 +13,8 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="text-center pt-2">
-                    <button type="submit" class="btn btn-success">Enviar</button>
+                    <button type="submit" class="btn btn-success"><strong>Registrar</strong></button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelar()">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -28,6 +29,9 @@
 <!--end footer black-->
 <!--script vanish footer black-->
 <script>
+    function cancelar() {
+        history.back(); // Regresar a la página anterior
+    }
     // Obtiene el elemento del footer
     var footer = document.getElementById("myFooter");
 

@@ -5,23 +5,24 @@
 <br>
 <h1 class="text-center"><strong>Catálogo de Vehículos <img src="{% static 'assets/img/car3.png' %}" alt=""></strong></h1>
 <br>
-<div class="container d-flex justify-content-center w-100">
-    <form class="d-flex" method="GET" action="{% url 'listar' %}">
+<div class="container d-flex justify-content-center">
+    <form class="d-flex align-items-center" method="GET" action="{% url 'listar' %}">
         <div class="input-group">
-            <input class="form-control rounded shadow-lg" type="search" placeholder="Buscar" aria-label="Search" name="query"
+            <input class="form-control rounded shadow-lg" type="search" placeholder="Buscar Categorias " aria-label="Search" name="query"
                 value="{{ request.GET.query }}">
-                <select class="form-select rounded ms-3 shadow-lg" name="precio_condicion">
-                    <option value="" {% if not precio_condicion %}selected{% endif %}>Todos</option>
-                    <option value="bajo" {% if precio_condicion == 'bajo' %}selected{% endif %}>Bajo</option>
-                    <option value="medio" {% if precio_condicion == 'medio' %}selected{% endif %}>Medio</option>
-                    <option value="alto" {% if precio_condicion == 'alto' %}selected{% endif %}>Alto</option>
-                </select>
-                <button class="btn btn-outline-success rounded ms-2 shadow-lg" type="submit">Buscar</button>
-            <button class="btn btn-outline-secondary rounded ms-3 shadow-lg" type="button" onclick="limpiarBusqueda()">Limpiar</button>
-            
-        </div>
+            <input class="form-control rounded ms-2 shadow-lg" type="search" placeholder="Buscar año" aria-label="Search" name="año" value="{{ annio }}">
+            <select class="form-select rounded ms-3 shadow-lg" name="precio_condicion">
+                <option value="" {% if not precio_condicion %}selected{% endif %}>Precio</option>
+                <option value="bajo" {% if precio_condicion == 'bajo' %}selected{% endif %}>Bajo</option>
+                <option value="medio" {% if precio_condicion == 'medio' %}selected{% endif %}>Medio</option>
+                <option value="alto" {% if precio_condicion == 'alto' %}selected{% endif %}>Alto</option>
+            </select>
+            <button class="btn btn-outline-success rounded ms-2 shadow-lg" type="submit">Buscar</button>
+            <button class="btn btn-outline-secondary rounded ms-2 shadow-lg" type="button" onclick="limpiarBusqueda()">Limpiar</button>
+            </div>
     </form>
 </div>
+
 {% endblock content %}
 
 {% block list %}
@@ -29,7 +30,7 @@
 <br><br>
 <div class="container shadow-lg">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>Marca</th>
@@ -37,6 +38,7 @@
                     <th>Serial Carrocería</th>
                     <th>Serial Motor</th>
                     <th>Categoría</th>
+                    <th>Año</th>
                     <th>Precio</th>
                     <th>Condicion Precio</th>
                 </tr>
@@ -49,46 +51,29 @@
                     <td>{{ vehiculo.serial_carroceria }}</td>
                     <td>{{ vehiculo.serial_motor }}</td>
                     <td>{{ vehiculo.categoria }}</td>
+                    <td>{{vehiculo.año }}</td>
                     <td>{{ vehiculo.precio }}</td>
                     <td>
-                        {% if vehiculo.precio <= 10000 %}
+                        {% if vehiculo.precio <= 7000000 %}
                             Bajo
-                        {% elif vehiculo.precio > 10000 and vehiculo.precio <= 30000 %}
+                        {% elif vehiculo.precio > 7500000 and vehiculo.precio <= 16000000 %}
                             Medio
-                        {% elif vehiculo.precio > 30000 %}
+                        {% elif vehiculo.precio > 16000000 %}
                             Alto
                         {% endif %}
                     </td>
+                    <td>
+                        <a href="{% url 'editar_vehiculo' vehiculo.pk %}" class="btn btn-success">Editar</a>
+                        <a href="{% url 'eliminar_vehiculo' vehiculo.pk %}" class="btn btn-danger">Eliminar</a>
+                    </td>
                 </tr>
+                
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
-<!-- footer black-->
-<footer id="myFooter" class="fixed-bottom bg-black text-center text-white py-1">
-    <div class="container-flex">
-        <p class="mt-2"><strong>Vehiculos APP</strong></p>
-    </div>
-</footer>
-<!--end footer black-->
-<!--script vanish footer-->
-<script>
-    // Obtiene el elemento del footer
-    var footer = document.getElementById("myFooter");
-
-    // Agrega un event listener para el evento "mouseover"
-    footer.addEventListener("mouseover", function() {
-        // Oculta el footer
-        footer.style.display = "none";
-    });
-
-    // Agrega un event listener para el evento "mouseout"
-    footer.addEventListener("mouseout", function() {
-        // Muestra el footer
-        footer.style.display = "block";
-    });
-</script>
+<div class="container" style="margin: 120px;"></div>
 
 {% endblock list %}
 
